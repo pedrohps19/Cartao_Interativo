@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon-32x32.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <title>Cartão Interativo</title>
+</head>
+<body>
+    <div class="container">
+        <div class="cardpart">
+            <div class="boxcards">
+                <div class="datacardfront">
+                    <img src="img/card-logo.svg" alt="" class="logo">
+                    <label id="datacard_numb" class="data_numb">0000 0000 0000 0000</label>
+                    <label class="datacard_part2">NOME</label>
+                    <label class="datacard_part3">00/00</label>
+                </div>
+
+                <div class="datacardback">
+                    <label class="datacard_cvv">000</label>
+                </div>
+            </div>
+        </div>
+
+        <form method="post" class="formpart">
+            <div class="formbox">
+                <label for="name_camp">Nome do Cartão</label>
+                <input type="text" name="name" id="name_camp" class="" maxlength="40" oninput="nomeCartao()" required placeholder="Digite seu nome">
+                <label for="name_camp" class="name_error">Por favor digite seu nome</label>
+
+                <label for="cardnumb_camp">Número do Cartão</label>
+                <input type="text" name="cardnumb" id="cardnumb_camp" oninput="numeroCartao()"
+                minlength="19" maxlength = "19" required placeholder="0000 0000 0000 0000">
+                <label for="cardnumb_camp" class="numb_error">Formato ou número do cartão inválido</label>
+
+                <div class="form_line2">
+                    <div class="nomes">
+                        <label for="date_month" class="data_label">Data (MM/AA)</label>
+                        <label for="cvv_camp" class="cvv_label">CVV</label>
+                    </div>
+                    
+                    <div class="inputs">
+                        <input type="number" name="date" id="date_month" class="date" max="12" required placeholder="MM" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); datasCartao()"
+                        maxlength = "2"  oninput="datasCartao()">
+                        
+                        <input type="number" name="date" id="date_year" class="date" min="23" required placeholder="AA" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); datasCartao()"
+                        maxlength = "2">
+                        
+
+                        <input type="text" name="cvv" id="cvv_camp" class="cvv_camp" required placeholder="123" oninput="codCartao()" minlength="3"
+                        maxlength = "3" >
+                    </div>
+                    <div class="end_error">
+                        <label for="name_camp" class="data_error">Data inválida</label>
+                        <label for="name_camp" class="cvv_error">Código inválido</label>
+                    </div>
+                </div>
+
+                
+                <button type="submit" class="validar">Confirmar</button>
+            </div>
+
+            <div class="confirmedScreen">
+                <img src="img/icon-complete.svg" alt="" class="confirmedLogo">
+                <div class="confirmed_text">
+                    <h2>Obrigado!</h2>
+                    <p>Adicionamos os dados do seu cartão</p>
+                </div>
+                <button type="submit" class="continue_btn">Continuar</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
